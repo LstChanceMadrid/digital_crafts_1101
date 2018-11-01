@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <meta charset="utf-8" />
+
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+        <title>Home</title>
+
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+        <link rel="stylesheet" type="text/css" href="/css/app.css" />
+    </head>
+
+    <body>
+        <header>
+            <h1>My Home Page - {{username}}</h1>
+        </header>
+
+        <main>
+            <form action="/add-trip" method="POST">
+                <fieldset>
+                    <legend>Add Trip</legend>
+
+                    <label class="add-trip-label">Trip Title:</label>
+                    <input type="text" name="tripTitle" placeholder="Enter Trip Title" /><br />
+
+                    <label class="add-trip-label">Location:</label>
+                    <input type="text" name="tripLocation" placeholder="Enter Location" /><br />
+
+                    <label class="add-trip-label">Departure Date:</label>
+                    <input type="text" name="tripDepartureDate" placeholder="Enter Departure Date" /><br />
+
+                    <label class="add-trip-label">Return Date:</label>
+                    <input type="text" name="tripReturnDate" placeholder="Enter Return Date" /><br />
+
+                    <input type="submit" value="Add Trip" />
+                </fieldset>
+            </form>
+
+            <form action="/filter" method="POST">
+                <input type="text" name="tripLocation" placeholder="Choose Location" />
+
+                <input type="submit" value="Filter" />
+            </form>
+
+            <fieldset>
+                <legend>My Trip List</legend>
+
+                <ul>
+                hello
+                    {{#trips}}
+                    <form action="/remove-trip" method="POST">
+                        <input type="hidden" name="removeTripTitle" value="{{title}}" />
+                
+                        <li>
+                            <div class="trip-item-container">
+                                <div class="trip-info">
+                                    Title: {{title}}
+                                    Location: {{location}}
+                                    Departure Date: {{departureDate}}
+                                    Return Date: {{returnDate}}
+                                </div>
+                            </div>
+                        </li>
+                        <input type="submit" value="Remove Trip" />
+                    </form>
+                    {{/trips}}
+                </ul>
+            </fieldset>
+        </main>
+
+        <footer>
+
+        </footer>
+    </body>
+
+    <script src=""></script>
+</html>
